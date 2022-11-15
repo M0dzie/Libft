@@ -6,7 +6,7 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:03:46 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/14 16:04:31 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/15 15:58:31 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,30 +21,17 @@
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t		i;
-	const char	*temp;
 
 	i = 0;
-	temp = src;
+	if (!dst && !src)
+		return (NULL);
 	while (i < len)
 	{
-		((char *)dst)[i] = temp[i];
+		if (dst > src)
+			((char *)dst)[len - i - 1] = ((char *)src)[len - i - 1];
+		else
+			((char *)dst)[i] = ((char *)src)[i];
 		i++;
 	}
 	return (dst);
 }
-
-// #include <stdio.h>
-// #include <string.h>
-
-// int	main(void)
-// {
-// 	char src[] = "lorem ipsum dolor sit amet";
-// 	char *dest;
-// 	dest = src + 1;
-// 	if (dest != ft_memmove(dest, src, 8))
-// 		write(1, "dest's adress was not returned\n", 31);
-// 	write(1, dest, 22);
-// 	return (0);
-// }
-
-// resultat = lorem ipum dolor sit a

@@ -6,7 +6,7 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:28:36 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/14 15:03:52 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/15 13:55:16 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*ft_itoa(int n)
 
 	i = 0;
 	len = ft_digit_count(n);
-	str = (char *)malloc(sizeof(char) * len);
+	str = malloc(sizeof(char) * len);
 	if (!str)
 		return (NULL);
 	if (n < 0)
@@ -65,10 +65,12 @@ char	*ft_itoa(int n)
 	return (str);
 }
 
-int	main(void)
-{
-	printf("\nft_itoa :\n");
-	int	n = 420;
-	printf("%s\n", ft_itoa(n));
-	return (0);
-}
+// int	main(void)
+// {
+// 	printf("\nft_itoa :\n");
+// 	int	n = 420;
+// 	printf("%s\n", ft_itoa(n));
+// 	return (0);
+// }
+
+// ft_strjoin(ft_itoa(n / 10), ft_itoa(n % 10));

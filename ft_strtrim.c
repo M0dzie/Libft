@@ -6,7 +6,7 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 10:11:14 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/14 15:25:14 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/15 15:16:00 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,40 @@
 int	ft_strcount(char const *s1, char const *set)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (s1[i] && s1[i] == set[i])
-		i++;
+	j = 0;
+	while (s1[i] && set[j])
+	{
+		if (s1[i] == set[j])
+		{
+			i++;
+			j = 0;
+		}
+		else
+			j++;
+	}
 	return (i);
 }
 
 int	ft_strrevcount(char const *s1, char const *set)
 {
 	int	i;
+	int	j;
 
-	i = ft_strlen(s1);
-	while (s1[i] && s1[i] == set[i])
-		i--;
+	i = ft_strlen(s1) - 1;
+	j = 0;
+	while (set[j])
+	{
+		if (s1[i] == set[j])
+		{
+			i--;
+			j = 0;
+		}
+		else
+			j++;
+	}
 	return (i);
 }
 
@@ -47,41 +67,20 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*trim;
 
 	i = 0;
+	if (!s1)
+		return (NULL);
 	i_bgn = ft_strcount(s1, set);
+	if ((size_t)i_bgn == ft_strlen(s1))
+		return (ft_strdup(""));
 	i_end = ft_strrevcount(s1, set);
-	trim = (char *)malloc(sizeof(char) * (ft_strlen(s1) - (i_bgn - i_end)) + 1);
+	trim = malloc(sizeof(char) * (i_end - i_bgn) + 2);
 	if (!trim)
 		return (NULL);
-	while (trim[i_bgn] && i_bgn < i_end)
+	while (i < i_end - i_bgn + 1)
 	{
-		trim[i_bgn] = s1[i_bgn];
-		i_bgn++;
+		trim[i] = s1[i_bgn + i];
+		i++;
 	}
-	trim[i_bgn] = '\0';
+	trim[i] = '\0';
 	return (trim);
 }
-
-#include <stdio.h>
-
-int	main(void)
-{
-	printf("\nft_strtrim :\n");
-	char const	str1[] = "lorem ipsum amet";
-	char const	str2[] = "lote";
-	printf("%s\n", ft_strtrim(str1, str2));
-}
-// calculer un index de debut et de fin pour savoir combien malloc
-
-// Approach: The idea is to count the leading spaces in the given string and 
-// then from that count index copy the characters from that index to the front 
-// of the string. Below are the steps:
-
-// Initialize count = 0 to count the number of leading spaces.
-// Iterate through given string and find the index(say idx) at which the 
-// leading space character ends.
-// Iterate through all the characters from that index idx and copy each 
-// character from this index to the end to the front index.
-// Finally, put ‘\0’ at the last index of the new string to terminate the 
-// string.
-
-//la fonction s'arrete au premier char pas trouve !

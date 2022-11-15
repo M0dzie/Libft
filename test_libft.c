@@ -6,7 +6,7 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:55:56 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/14 10:03:11 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/15 15:45:18 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,14 @@ int	main(void)
 	printf("%d ", memcmp("Sal\0t a tous", "Sal\0t A tous", n));
 	printf("%d\n", memcmp("Sal\0t a tous", "Sal\0t A tous", n2));
 
+	printf("\nft_memmove :\n");
+	char src[] = "lorem ipsum dolor sit amet";
+	char *dest;
+	dest = src + 1;
+	if (dest != ft_memmove(dest, src, 8))
+		write(1, "dest's adress was not returned\n", 31);
+	write(1, dest, 22);
+
 	printf("\nft_strlcat :\n");
 	char	str1[15] = "abcdefg";
 	char	str2[7] = "123456";
@@ -160,5 +168,15 @@ int	main(void)
 	const char	str1[] = "abcdefg";
 	const char	str2[] = "123456";
 	printf("%s\n", ft_strjoin(str1, str2));
+	
+	printf("\nft_strtrim :\n");
+	char const	str1[] = "      ";
+	char const	str2[] = " ";
+	printf("%s\n", ft_strtrim(str1, str2));
+
+	printf("\nft_split :\n");
+	char const	*str = "split this for me !";
+	char		c = ' ';
+	printf("%s\n", ft_split(str, c));
 	return (0);
 }

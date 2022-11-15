@@ -6,7 +6,7 @@
 #    By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 13:07:05 by thmeyer           #+#    #+#              #
-#    Updated: 2022/11/14 10:15:05 by thmeyer          ###   ########.fr        #
+#    Updated: 2022/11/15 14:56:32 by thmeyer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,14 +46,14 @@ ft_putnbr_fd.c \
 ft_itoa.c \
 ft_substr.c \
 ft_strjoin.c \
-ft_strtrim.c
+ft_strtrim.c \
+ft_split.c
 
 OBJ = $(SRC:.c=.o)
 
 all: prog
 
 prog: $(OBJ)
-#	$(CC) $(FLAGS) -o $(NAME) $(SRC)
 	ar rc $(NAME) $(OBJ)
 
 %.o: %.c

@@ -6,7 +6,7 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:01:21 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/14 15:20:32 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/15 10:33:38 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*ft_calloc(size_t count, size_t size)
 
 	if (size > 0 && count > SIZE_MAX / size)
 		return (NULL);
-	str = (char *)malloc(size * count);
+	str = malloc(size * count);
 	if (!str)
 		return (NULL);
 	ft_bzero(str, count * size);
