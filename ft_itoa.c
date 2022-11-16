@@ -6,7 +6,7 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:28:36 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/15 13:55:16 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/16 12:33:07 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  * @param n 
  * @return
  */
-int	ft_digit_count(int n)
+static int	ft_digit_count(int n)
 {
 	int	result;
 

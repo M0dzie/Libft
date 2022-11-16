@@ -6,7 +6,7 @@
 #    By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 13:07:05 by thmeyer           #+#    #+#              #
-#    Updated: 2022/11/15 14:56:32 by thmeyer          ###   ########.fr        #
+#    Updated: 2022/11/16 12:51:16 by thmeyer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ NAME = libft.a
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
+
+RM = rm -rf
 
 SRC = ft_isalpha.c \
 ft_isdigit.c \
@@ -51,19 +53,19 @@ ft_split.c
 
 OBJ = $(SRC:.c=.o)
 
-all: prog
+all: $(NAME)
 
-prog: $(OBJ)
+$(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
 
 %.o: %.c
-	$(CC) -o $@ -c $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-	rm -f *.o
+	$(RM) $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:58 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/15 13:06:22 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/16 11:27:12 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,52 +21,21 @@
  */
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t	i;
-	size_t	len_src;
 	size_t	len_dst;
+	size_t	len_src;
 
-	len_src = ft_strlen(src);
-	len_dst = ft_strlen(dst);
-	i = 0;
-	if (dstsize != 0 || len_dst < dstsize)
+	len_dst = 0;
+	len_src = 0;
+	if ((!dst || !src) && dstsize == 0)
+		return (0);
+	while (dst[len_dst] && len_dst < dstsize)
+		len_dst++;
+	while (src[len_src] && (len_dst + len_src + 1) < dstsize)
 	{
-		while (src[i] && dstsize > len_dst + i + 1)
-		{
-			dst[len_dst + i] = src[i];
-			i++;
-		}
-		dst[len_dst + i] = '\0';
-		return (len_src + len_dst);
+		dst[len_dst + len_src] = src[len_src];
+		len_src++;
 	}
-	else
-		return (len_src + dstsize);
+	if (len_dst < dstsize)
+		dst[len_dst + len_src] = '\0';
+	return (len_dst + ft_strlen(src));
 }
-
-// size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
-// {
-// 	size_t	i;
-// 	size_t	j;
-// 	size_t	len_dst;
-// 	size_t	len_src;
-
-// 	i = 0;
-// 	len_dst = ft_strlen(dst);
-// 	len_src = ft_strlen(src);
-// 	if (dstsize < len_dst)
-// 		return (dstsize + len_src);
-// 	while (dst[i] && dstsize > 0)
-// 	{
-// 		i++;
-// 		dstsize--;
-// 	}
-// 	j = 0;
-// 	while (src[j] && dstsize > 1)
-// 	{
-// 		i++;
-// 		dstsize--;
-// 		j++;
-// 	}
-// 	if (dstsize > 0)
-// 		dst[i + j] = '\0';
-// 	return (len_dst + len_src);
-// }

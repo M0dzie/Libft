@@ -6,7 +6,7 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:03:24 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/15 15:19:28 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/16 12:33:31 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  * @return The array of new strings resulting from the split or NULL if the 
  * allocation fails
  */
-int	ft_count_lines(char const *s, char c)
+static int	ft_count_lines(char const *s, char c)
 {
 	int	i;
 	int	count;
@@ -38,7 +38,7 @@ int	ft_count_lines(char const *s, char c)
 	return (count);
 }
 
-int	ft_lineslen(char const *s, char c, int index)
+static int	ft_lineslen(char const *s, char c, int index)
 {
 	while (s[index] != c)
 		index++;

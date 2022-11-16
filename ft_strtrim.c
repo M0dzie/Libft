@@ -6,13 +6,13 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 10:11:14 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/15 15:16:00 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/16 12:33:52 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strcount(char const *s1, char const *set)
+static int	ft_strcount(char const *s1, char const *set)
 {
 	int	i;
 	int	j;
@@ -32,7 +32,7 @@ int	ft_strcount(char const *s1, char const *set)
 	return (i);
 }
 
-int	ft_strrevcount(char const *s1, char const *set)
+static int	ft_strrevcount(char const *s1, char const *set)
 {
 	int	i;
 	int	j;

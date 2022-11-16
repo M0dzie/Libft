@@ -6,7 +6,7 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:01:16 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/15 16:01:29 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/16 10:13:57 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	i = 0;
 	str1 = (unsigned char *)s1;
 	str2 = (unsigned char *)s2;
-	while ((ft_isascii(str1[i]) && (ft_isascii(str2[i])) && i < n))
+	while (i < n)
 	{
 		if (str1[i] != str2[i])
 			return (str1[i] - str2[i]);
 		i++;
 	}
-	return (str1[i] - str2[i]);
+	return (0);
 }
