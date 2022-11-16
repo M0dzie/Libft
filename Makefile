@@ -6,7 +6,7 @@
 #    By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 13:07:05 by thmeyer           #+#    #+#              #
-#    Updated: 2022/11/16 12:51:16 by thmeyer          ###   ########.fr        #
+#    Updated: 2022/11/16 16:10:02 by thmeyer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,9 @@ ft_itoa.c \
 ft_substr.c \
 ft_strjoin.c \
 ft_strtrim.c \
-ft_split.c
+ft_split.c \
+ft_strmapi.c \
+ft_striteri.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -58,7 +60,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
 
-%.o: %.c
+%.o: %.c Makefile
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:

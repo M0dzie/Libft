@@ -6,7 +6,7 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:03:24 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/16 12:33:31 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/16 16:41:15 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ static int	ft_count_lines(char const *s, char c)
 	count = 0;
 	while (s[i])
 	{
-		if ((s)[i] == c && s[i + 1] != c)
+		if (s[i] != c && count == 0)
+			count++;
+		if (s[i] == c && s[i + 1] != c)
 			count++;
 		i++;
 	}
@@ -45,48 +47,45 @@ static int	ft_lineslen(char const *s, char c, int index)
 	return (index);
 }
 
+static char	*ft_fill(char const *s, char *split, char c, int index)
+{
+	int	i;
+
+	i = 0;
+	while (s[index] != c)
+	{
+		split[i] = s[index];
+		i++;
+		index++;
+	}
+	return (split);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	int		i;
 	int		j;
-	int		k;
+	int		index;
 	char	**s_split;
 
 	i = 0;
 	j = 0;
-	k = 0;
+	index = 0;
 	if (!s)
 		return (NULL);
-	s_split = malloc(ft_count_lines(s, c) * sizeof(char *));
+	s_split = malloc(sizeof(char *) * ft_count_lines(s, c) + 1);
 	if (!s_split)
 		return (NULL);
-	while (s[k])
+	while (s[index])
 	{
-		if (s[k] == c && s[k + 1] != c)
+		if (s[index] == c && s[index + 1] != c)
 		{
-			s_split[i] = malloc(sizeof(char) * ft_lineslen(s, c, j) + 1);
-			s_split[i] = ft_strtrim(s, &c);
+			s_split[i] = malloc(sizeof(char) * ft_lineslen(s, c, index) + 1);
+			s_split[i] = ft_fill(s, s_split[i], c, index);
 			i++;
 		}
-		k++;
+		index++;
 	}
+	s_split[i] = 0;
 	return (s_split);
 }
-
-// int	main(void)
-// {
-//     char *str = "J'aime les nouilles , mais je prefere le poney \n Yes Daddy     ";
-//     char *charset = " ,,\n";
-//     char **all_words = ft_split(str, charset);
-//     int index = 0;
-//     while (all_words[index])
-//     {
-//         printf("%s\n",all_words[index]);
-//         index++;
-//     }
-// 	return (0);
-// }
-
-// c doit degager : +1
-// "split", "this", "for", "me", "!"
-// compter le nombre de mots pour savoir combien de tableaux faire

@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 09:18:08 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/16 16:30:22 by thmeyer          ###   ########.fr       */
+/*   Created: 2022/11/16 16:08:58 by thmeyer           #+#    #+#             */
+/*   Updated: 2022/11/16 16:30:05 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 /**
- * @brief copies n bytes from memory area src to memory area dst
- * @param dst 
- * @param src 
- * @param n 
- * @return the original value of dst
+ * @brief applies the function 'f' on each character of the string passed as 
+ * argument, passing its index as first argument. Each character is passed 
+ * by address to 'f' to be modified if necessary
+ * @param s the string on which to iterate
+ * @param f the function to apply to each character
+ * @return nothing
  */
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	size_t	i;
+	int		i;
 
 	i = 0;
-	if (!dst && !src)
-		return (NULL);
-	while (i < n)
+	if (!s)
+		return ;
+	while (s[i])
 	{
-		((char *)dst)[i] = ((char *)src)[i];
+		f(i, &s[i]);
 		i++;
 	}
-	return (dst);
 }
