@@ -6,21 +6,12 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:03:24 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/17 09:53:52 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/17 17:54:20 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-/**
- * @brief Allocates with malloc and returns an array of strings obtained by 
- * splitting 's' using the character 'c' as a delimiter.  The array must end 
- * with a NULL pointer
- * @param s
- * @param c
- * @return The array of new strings resulting from the split or NULL if the 
- * allocation fails
- */
+
 static int	ft_count_words(char const *s, char c)
 {
 	int	i;
@@ -30,72 +21,113 @@ static int	ft_count_words(char const *s, char c)
 	count = 0;
 	while (s[i])
 	{
-		if (s[i] != c && count == 0)
-			count++;
-		if (s[i] == c && s[i + 1] != c)
+		if (s[i] != c && (s[i + 1] == c || !s[i + 1]))
 			count++;
 		i++;
 	}
-	printf("%d\n", count);
 	return (count);
 }
 
-static char	*ft_fill(char const *s, int start, int finish)
+static void	ft_free(char **split)
 {
-	int		i;
-	char	*to_fill;
+	int	i;
 
 	i = 0;
-	to_fill = malloc(sizeof(char) * (finish - start) + 1);
-	while (start < finish)
-	{
-		to_fill[i] = s[start];
-		i++;
-		start++;
-	}
-	to_fill[i] = '\0';
-	return (to_fill);
+	while (split[i])
+		free(split[i++]);
+	free(split);
 }
 
+static char	*ft_fill(char *s1, char c)
+{
+	int		i;
+	int		len;
+	char	*dest;
+
+	i = 0;
+	len = 0;
+	while (s1[len] && s1[len] != c)
+		len++;
+	dest = malloc(sizeof(char) * (len + 1));
+	if (!dest)
+		return (NULL);
+	while (i < len)
+	{
+		dest[i] = s1[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
+static void	ft_put_words(char **split, char *s, char c)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (s[i])
+	{
+		if (s[i] == c && s[i + 1] != c)
+		{
+			split[count] = ft_fill(s + i, c);
+			if (!split[count])
+				return (ft_free(split));
+			count++;
+		}
+		i++;
+	}
+}
+
+// static void	ft_put_words(char **split, char *s, char c)
+// {
+// 	int	i;
+// 	int is_prev_sep;
+// 	int	count;
+
+// 	i = 0;
+// 	is_prev_sep = 1;
+// 	count = 0;
+// 	while (s[i])
+// 	{
+// 		if (s[i] != c && is_prev_sep)
+// 		{
+// 			split[count] = get_word(s + i, c);
+// 			if (!split[count])
+// 			{
+// 				ft_free(split);
+// 				return ;
+// 			}
+// 			count++;
+// 		}
+// 		is_prev_sep = (s[i] == c);
+// 		i++;
+// 	}
+// }
+
+/**
+ * @brief Allocates with malloc and returns an array of strings obtained by 
+ * splitting 's' using the character 'c' as a delimiter.  The array must end 
+ * with a NULL pointer
+ * @param s
+ * @param c
+ * @return The array of new strings resulting from the split or NULL if the 
+ * allocation fails
+ */
 char	**ft_split(char const *s, char c)
 {
-	int		i;
-	int		start;
-	int		finish;
+	int		word_count;
 	char	**split;
 
-	i = 0;
-	start = 0;
-	finish = 0;
 	if (!s)
 		return (NULL);
-	split = malloc(sizeof(char *) * ft_count_words(s, c) + 1);
+	word_count = ft_count_words(s, c);
+	split = malloc(sizeof(char *) * (word_count + 1));
 	if (!split)
 		return (NULL);
-	while (s[finish])
-	{
-		if (s[finish] == c && s[finish + 1] != c)
-		{
-			split[i] = ft_fill(s, start, finish);
-			i++;
-			start = finish + 1;
-		}
-		finish++;
-	}
-	split[i] = 0;
+	ft_put_words(split, (char *)s, c);
+	if (split)
+		split[word_count] = NULL;
 	return (split);
-}
-
-#include <stdio.h>
-int main()
-{
-    char *str = " split   this for    me";
-    char charset = ' ';
-    char **all_words = ft_split(str, charset);
-    int index = 0;
-    while (all_words[index])
-    {
-        printf("%s\n",all_words[index]);
-        index++;
-    }
 }
