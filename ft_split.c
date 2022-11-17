@@ -6,7 +6,7 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:03:24 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/16 16:41:15 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/17 09:53:52 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  * @return The array of new strings resulting from the split or NULL if the 
  * allocation fails
  */
-static int	ft_count_lines(char const *s, char c)
+static int	ft_count_words(char const *s, char c)
 {
 	int	i;
 	int	count;
@@ -36,56 +36,66 @@ static int	ft_count_lines(char const *s, char c)
 			count++;
 		i++;
 	}
-	printf("%d", count);
+	printf("%d\n", count);
 	return (count);
 }
 
-static int	ft_lineslen(char const *s, char c, int index)
+static char	*ft_fill(char const *s, int start, int finish)
 {
-	while (s[index] != c)
-		index++;
-	return (index);
-}
-
-static char	*ft_fill(char const *s, char *split, char c, int index)
-{
-	int	i;
+	int		i;
+	char	*to_fill;
 
 	i = 0;
-	while (s[index] != c)
+	to_fill = malloc(sizeof(char) * (finish - start) + 1);
+	while (start < finish)
 	{
-		split[i] = s[index];
+		to_fill[i] = s[start];
 		i++;
-		index++;
+		start++;
 	}
-	return (split);
+	to_fill[i] = '\0';
+	return (to_fill);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	int		i;
-	int		j;
-	int		index;
-	char	**s_split;
+	int		start;
+	int		finish;
+	char	**split;
 
 	i = 0;
-	j = 0;
-	index = 0;
+	start = 0;
+	finish = 0;
 	if (!s)
 		return (NULL);
-	s_split = malloc(sizeof(char *) * ft_count_lines(s, c) + 1);
-	if (!s_split)
+	split = malloc(sizeof(char *) * ft_count_words(s, c) + 1);
+	if (!split)
 		return (NULL);
-	while (s[index])
+	while (s[finish])
 	{
-		if (s[index] == c && s[index + 1] != c)
+		if (s[finish] == c && s[finish + 1] != c)
 		{
-			s_split[i] = malloc(sizeof(char) * ft_lineslen(s, c, index) + 1);
-			s_split[i] = ft_fill(s, s_split[i], c, index);
+			split[i] = ft_fill(s, start, finish);
 			i++;
+			start = finish + 1;
 		}
-		index++;
+		finish++;
 	}
-	s_split[i] = 0;
-	return (s_split);
+	split[i] = 0;
+	return (split);
+}
+
+#include <stdio.h>
+int main()
+{
+    char *str = " split   this for    me";
+    char charset = ' ';
+    char **all_words = ft_split(str, charset);
+    int index = 0;
+    while (all_words[index])
+    {
+        printf("%s\n",all_words[index]);
+        index++;
+    }
 }
