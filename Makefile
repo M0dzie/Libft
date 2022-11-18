@@ -6,7 +6,7 @@
 #    By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 13:07:05 by thmeyer           #+#    #+#              #
-#    Updated: 2022/11/18 14:29:33 by thmeyer          ###   ########.fr        #
+#    Updated: 2022/11/18 17:58:12 by thmeyer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,18 +59,33 @@ ft_split.c \
 ft_strmapi.c \
 ft_striteri.c
 
+SRC_BONUS = ft_lstnew.c \
+ft_lstadd_front.c \
+ft_lstsize.c \
+ft_lstlast.c \
+ft_lstadd_back.c \
+ft_lstdelone.c \
+ft_lstclear.c \
+ft_lstiter.c \
+ft_lstmap.c
+
 OBJ = $(SRC:.c=.o)
+
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJ)
 
+bonus: $(OBJ) $(OBJ_BONUS)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJ) $(OBJ_BONUS)
+
 %.o: %.c Makefile $(HEADER)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJ) $(OBJ_BONUS)
 
 fclean: clean
 	$(RM) $(NAME)
