@@ -6,18 +6,17 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:28:36 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/16 12:33:07 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/18 16:00:15 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 /**
  * @brief converts the portion of int to str
  * @param n 
  * @return
  */
-static int	ft_digit_count(int n)
+static int	ft_digit_count(long int n)
 {
 	int	result;
 
@@ -29,7 +28,7 @@ static int	ft_digit_count(int n)
 		result++;
 		n *= -1;
 	}
-	while (n != 0)
+	while (n > 0)
 	{
 		n /= 10;
 		result++;
@@ -39,38 +38,27 @@ static int	ft_digit_count(int n)
 
 char	*ft_itoa(int n)
 {
-	char	*str;
-	int		len;
-	int		i;
-	int		nbr;
+	char			*str;
+	int				i;
+	long int		lng_n;
 
-	i = 0;
-	len = ft_digit_count(n);
-	str = malloc(sizeof(char) * len);
+	lng_n = n;
+	i = ft_digit_count(lng_n);
+	str = malloc(sizeof(char) * (i + 1));
 	if (!str)
 		return (NULL);
-	if (n < 0)
-		str[i++] = '-';
-	if (n < 10)
-		str[i] = n + 48;
-	else
+	str[i--] = '\0';
+	if (lng_n == 0)
+		str[0] = '0';
+	if (lng_n < 0)
 	{
-		while (i < len)
-		{
-			nbr = n / 10;
-			str[i++] = nbr + 48;
-			n = n % 10;
-		}
+		str[0] = '-';
+		lng_n *= -1;
+	}
+	while (lng_n > 0)
+	{
+		str[i--] = (lng_n % 10) + '0';
+		lng_n /= 10;
 	}
 	return (str);
 }
-
-// int	main(void)
-// {
-// 	printf("\nft_itoa :\n");
-// 	int	n = 420;
-// 	printf("%s\n", ft_itoa(n));
-// 	return (0);
-// }
-
-// ft_strjoin(ft_itoa(n / 10), ft_itoa(n % 10));

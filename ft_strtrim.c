@@ -6,7 +6,7 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 10:11:14 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/16 12:33:52 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/17 17:17:27 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if ((size_t)i_bgn == ft_strlen(s1))
 		return (ft_strdup(""));
 	i_end = ft_strrevcount(s1, set);
-	trim = malloc(sizeof(char) * (i_end - i_bgn) + 2);
+	trim = malloc(sizeof(char) * ((i_end - i_bgn) + 2));
 	if (!trim)
 		return (NULL);
 	while (i < i_end - i_bgn + 1)

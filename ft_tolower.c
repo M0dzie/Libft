@@ -6,7 +6,7 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:48:31 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/15 13:31:39 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/18 14:11:01 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
-		return ((unsigned char)c + 32);
+		return (c + 32);
 	else
-		return ((unsigned char)c);
+		return (c);
 }

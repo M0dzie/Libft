@@ -6,7 +6,7 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:03:24 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/17 17:54:20 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/18 12:26:27 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_count_words(char const *s, char c)
 	count = 0;
 	while (s[i])
 	{
-		if (s[i] != c && (s[i + 1] == c || !s[i + 1]))
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
 			count++;
 		i++;
 	}
@@ -34,7 +34,10 @@ static void	ft_free(char **split)
 
 	i = 0;
 	while (split[i])
-		free(split[i++]);
+	{
+		free(split[i]);
+		i++;
+	}
 	free(split);
 }
 
@@ -63,48 +66,28 @@ static char	*ft_fill(char *s1, char c)
 static void	ft_put_words(char **split, char *s, char c)
 {
 	int	i;
+	int	is_start;
 	int	count;
 
 	i = 0;
+	is_start = 1;
 	count = 0;
 	while (s[i])
 	{
-		if (s[i] == c && s[i + 1] != c)
+		if (s[i] != c && is_start)
 		{
 			split[count] = ft_fill(s + i, c);
 			if (!split[count])
-				return (ft_free(split));
+			{
+				ft_free(split);
+				return ;
+			}
 			count++;
 		}
+		is_start = (s[i] == c);
 		i++;
 	}
 }
-
-// static void	ft_put_words(char **split, char *s, char c)
-// {
-// 	int	i;
-// 	int is_prev_sep;
-// 	int	count;
-
-// 	i = 0;
-// 	is_prev_sep = 1;
-// 	count = 0;
-// 	while (s[i])
-// 	{
-// 		if (s[i] != c && is_prev_sep)
-// 		{
-// 			split[count] = get_word(s + i, c);
-// 			if (!split[count])
-// 			{
-// 				ft_free(split);
-// 				return ;
-// 			}
-// 			count++;
-// 		}
-// 		is_prev_sep = (s[i] == c);
-// 		i++;
-// 	}
-// }
 
 /**
  * @brief Allocates with malloc and returns an array of strings obtained by 
@@ -128,6 +111,6 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	ft_put_words(split, (char *)s, c);
 	if (split)
-		split[word_count] = NULL;
+		split[word_count] = 0;
 	return (split);
 }

@@ -6,7 +6,7 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:30:22 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/15 13:31:32 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/18 14:10:53 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 int	ft_toupper(int c)
 {
 	if (c >= 'a' && c <= 'z')
-		return ((unsigned char)c - 32);
+		return (c - 32);
 	else
-		return ((unsigned char)c);
+		return (c);
 }

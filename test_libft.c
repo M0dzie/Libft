@@ -6,7 +6,7 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:55:56 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/15 15:45:18 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/18 15:52:55 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,8 +175,18 @@ int	main(void)
 	printf("%s\n", ft_strtrim(str1, str2));
 
 	printf("\nft_split :\n");
-	char const	*str = "split this for me !";
-	char		c = ' ';
-	printf("%s\n", ft_split(str, c));
+    char *str = "     split   this for    me    ";
+    char charset = ' ';
+    char **all_words = ft_split(str, charset);
+    int index = 0;
+    while (all_words[index])
+    {
+        printf("%s\n",all_words[index]);
+        index++;
+    }
+
+	printf("\nft_itoa :\n");
+	int	n = 0;
+	printf("%s\n", ft_itoa(n));
 	return (0);
 }

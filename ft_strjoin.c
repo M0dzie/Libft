@@ -6,7 +6,7 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 09:46:39 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/16 16:35:50 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/18 12:35:12 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	j = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	join = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
+	join = malloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2)) + 1));
 	if (!join)
 		return (NULL);
 	while (s1[i])

@@ -6,15 +6,21 @@
 #    By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 13:07:05 by thmeyer           #+#    #+#              #
-#    Updated: 2022/11/16 16:10:02 by thmeyer          ###   ########.fr        #
+#    Updated: 2022/11/18 14:29:33 by thmeyer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
+HEADER = libft.h
+
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
+
+AR = ar
+
+ARFLAGS = -rc
 
 RM = rm -rf
 
@@ -58,9 +64,9 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJ)
 
-%.o: %.c Makefile
+%.o: %.c Makefile $(HEADER)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:

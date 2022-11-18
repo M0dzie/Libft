@@ -6,7 +6,7 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 17:08:58 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/16 12:39:17 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/17 17:18:02 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strdup(const char *s1)
 
 	i = 0;
 	len_dup = ft_strlen(s1);
-	str_dup = malloc(sizeof(char) * len_dup + 1);
+	str_dup = malloc(sizeof(char) * (len_dup + 1));
 	if (!str_dup)
 		return (NULL);
 	while (s1[i])
