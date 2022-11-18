@@ -6,7 +6,7 @@
 /*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 14:06:09 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/16 11:00:40 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/18 16:02:44 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
  */
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	int	result;
+	long long int	i;
+	int				sign;
+	int				result;
 
 	i = 0;
 	sign = 1;
