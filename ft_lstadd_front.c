@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmeyer <marvin42@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:36:08 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/18 18:11:36 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/20 10:20:21 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  */
 void	ft_lstadd_front(t_list	**lst, t_list	*new)
 {
-	if (!new)
+	if (!lst)
 		return ;
 	new->next = (*lst);
 	(*lst) = new;
