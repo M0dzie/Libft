@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmeyer <marvin42@42.fr>                   +#+  +:+       +#+        */
+/*   By: thmeyer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:39:03 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/20 10:25:31 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/21 13:28:50 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * @param lst the beginning of the list
  * @return the length of the list
  */
-int	ft_lstsize(t_list	*lst)
+int	ft_lstsize(t_list *lst)
 {
 	int	size;
 

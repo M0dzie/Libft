@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmeyer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:03:24 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/18 12:26:27 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:03:28 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count_words(char const *s, char c)
+static size_t	count_words(char const *s, char c)
 {
-	int	i;
-	int	count;
+	size_t	i;
+	size_t	count;
 
 	i = 0;
 	count = 0;
@@ -28,9 +28,9 @@ static int	ft_count_words(char const *s, char c)
 	return (count);
 }
 
-static void	ft_free(char **split)
+static void	free_split(char **split)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (split[i])
@@ -41,10 +41,10 @@ static void	ft_free(char **split)
 	free(split);
 }
 
-static char	*ft_fill(char *s1, char c)
+static char	*fill_str(char *s1, char c)
 {
-	int		i;
-	int		len;
+	size_t	i;
+	size_t	len;
 	char	*dest;
 
 	i = 0;
@@ -63,11 +63,11 @@ static char	*ft_fill(char *s1, char c)
 	return (dest);
 }
 
-static void	ft_put_words(char **split, char *s, char c)
+static void	find_words(char **split, char *s, char c)
 {
-	int	i;
-	int	is_start;
-	int	count;
+	size_t	i;
+	int		is_start;
+	size_t	count;
 
 	i = 0;
 	is_start = 1;
@@ -76,10 +76,10 @@ static void	ft_put_words(char **split, char *s, char c)
 	{
 		if (s[i] != c && is_start)
 		{
-			split[count] = ft_fill(s + i, c);
+			split[count] = fill_str(s + i, c);
 			if (!split[count])
 			{
-				ft_free(split);
+				free_split(split);
 				return ;
 			}
 			count++;
@@ -100,16 +100,16 @@ static void	ft_put_words(char **split, char *s, char c)
  */
 char	**ft_split(char const *s, char c)
 {
-	int		word_count;
+	size_t	word_count;
 	char	**split;
 
 	if (!s)
 		return (NULL);
-	word_count = ft_count_words(s, c);
+	word_count = count_words(s, c);
 	split = malloc(sizeof(char *) * (word_count + 1));
 	if (!split)
 		return (NULL);
-	ft_put_words(split, (char *)s, c);
+	find_words(split, (char *)s, c);
 	if (split)
 		split[word_count] = 0;
 	return (split);

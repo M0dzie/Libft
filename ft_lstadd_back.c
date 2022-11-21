@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmeyer <marvin42@42.fr>                   +#+  +:+       +#+        */
+/*   By: thmeyer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:43:27 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/20 10:42:13 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/21 13:27:10 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * @param lst the address of a pointer to the first link of a list
  * @param new the address of a pointer to the node to be added to the list
  */
-void	ft_lstadd_back(t_list	**lst, t_list	*new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*last_lst;
 

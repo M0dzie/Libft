@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmeyer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:28:36 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/18 16:34:40 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/21 15:01:32 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
  * @param n 
  * @return
  */
-static int	ft_digit_count(long int n)
+static size_t	digit_count(long int n)
 {
-	int	result;
+	size_t	result;
 
 	result = 0;
 	if (n == 0)
@@ -39,11 +39,11 @@ static int	ft_digit_count(long int n)
 char	*ft_itoa(int n)
 {
 	char			*str;
-	int				i;
+	size_t			i;
 	long int		lng_n;
 
 	lng_n = n;
-	i = ft_digit_count(lng_n);
+	i = digit_count(lng_n);
 	str = malloc(sizeof(char) * (i + 1));
 	if (!str)
 		return (NULL);

@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmeyer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 10:11:14 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/17 17:17:27 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/21 13:39:13 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_strcount(char const *s1, char const *set)
+static size_t	str_count(char const *s1, char const *set)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
@@ -32,10 +32,10 @@ static int	ft_strcount(char const *s1, char const *set)
 	return (i);
 }
 
-static int	ft_strrevcount(char const *s1, char const *set)
+static size_t	str_rev_count(char const *s1, char const *set)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = ft_strlen(s1) - 1;
 	j = 0;
@@ -61,18 +61,18 @@ static int	ft_strrevcount(char const *s1, char const *set)
  */
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		i;
-	int		i_bgn;
-	int		i_end;
+	size_t	i;
+	size_t	i_bgn;
+	size_t	i_end;
 	char	*trim;
 
 	i = 0;
 	if (!s1)
 		return (NULL);
-	i_bgn = ft_strcount(s1, set);
-	if ((size_t)i_bgn == ft_strlen(s1))
+	i_bgn = str_count(s1, set);
+	if (i_bgn == ft_strlen(s1))
 		return (ft_strdup(""));
-	i_end = ft_strrevcount(s1, set);
+	i_end = str_rev_count(s1, set);
 	trim = malloc(sizeof(char) * ((i_end - i_bgn) + 2));
 	if (!trim)
 		return (NULL);

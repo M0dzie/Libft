@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmeyer <marvin42@42.fr>                   +#+  +:+       +#+        */
+/*   By: thmeyer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:41:17 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/20 10:28:06 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/21 13:27:47 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
  * @param lst the beginning of the list
  * @return the last node of the list
  */
-t_list	*ft_lstlast(t_list	*lst)
+t_list	*ft_lstlast(t_list *lst)
 {
 	t_list	*last_lst;
 
 	if (!lst)
-		return (NULL);
+		return (0);
 	while (lst)
 	{
 		last_lst = lst;

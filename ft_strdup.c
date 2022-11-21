@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thmeyer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 17:08:58 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/17 17:18:02 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/21 13:33:39 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  */
 char	*ft_strdup(const char *s1)
 {
-	int		i;
+	size_t	i;
 	size_t	len_dup;
 	char	*str_dup;
 
