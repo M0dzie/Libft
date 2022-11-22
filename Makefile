@@ -6,7 +6,7 @@
 #    By: thmeyer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 13:07:05 by thmeyer           #+#    #+#              #
-#    Updated: 2022/11/21 13:58:24 by thmeyer          ###   ########.fr        #
+#    Updated: 2022/11/22 15:12:42 by thmeyer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ ARFLAGS = -rcs
 
 RM = rm -rf
 
-SRC = ft_isalpha.c \
+SRCS = ft_isalpha.c \
 ft_isdigit.c \
 ft_isalnum.c \
 ft_isascii.c \
@@ -59,7 +59,7 @@ ft_split.c \
 ft_strmapi.c \
 ft_striteri.c
 
-SRC_BONUS = ft_lstnew.c \
+SRCS_BONUS = ft_lstnew.c \
 ft_lstadd_front.c \
 ft_lstsize.c \
 ft_lstlast.c \
@@ -69,23 +69,23 @@ ft_lstclear.c \
 ft_lstiter.c \
 ft_lstmap.c
 
-OBJ = $(SRC:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
-OBJ_BONUS = $(SRC_BONUS:.c=.o)
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJ)
+$(NAME): $(OBJS)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
-bonus: $(OBJ) $(OBJ_BONUS)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJ) $(OBJ_BONUS)
+bonus: $(OBJS) $(OBJS_BONUS)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS) $(OBJS_BONUS)
 
 %.o: %.c Makefile $(HEADER)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-	$(RM) $(OBJ) $(OBJ_BONUS)
+	$(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean: clean
 	$(RM) $(NAME)

@@ -6,14 +6,14 @@
 /*   By: thmeyer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:03:46 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/21 13:29:17 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/22 14:47:08 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 /** 
- * @brief function copies len bytes from string src to string dst the copy is 
- * always done in a non-destructive manner
+ * @brief copies len bytes from string src to string dst the copy is always 
+ * done in a non-destructive manner
  * @param dst 
  * @param src 
  * @param len 
