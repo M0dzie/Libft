@@ -6,7 +6,7 @@
 /*   By: thmeyer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:03:24 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/21 16:03:28 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/22 09:16:32 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	free_split(char **split)
 	free(split);
 }
 
-static char	*fill_str(char *s1, char c)
+static char	*fill_words(char *s1, char c)
 {
 	size_t	i;
 	size_t	len;
@@ -76,7 +76,7 @@ static void	find_words(char **split, char *s, char c)
 	{
 		if (s[i] != c && is_start)
 		{
-			split[count] = fill_str(s + i, c);
+			split[count] = fill_words(s + i, c);
 			if (!split[count])
 			{
 				free_split(split);
