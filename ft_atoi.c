@@ -6,7 +6,7 @@
 /*   By: thmeyer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 13:20:36 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/22 20:28:34 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/22 20:29:41 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,4 @@ int	ft_atoi(const char *str)
 	if ((result * 10) / 10 != 1)
 		return (check_overflow(sign));
 	return (result * sign);
-}
-
-#include <stdio.h>
-
-int	main(void)
-{
-	char *str;
-	str = "54646846543516468156468";
-	printf("%d\n%d", atoi(str), ft_atoi(str));
-	return (0);
 }
