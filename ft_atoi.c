@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmeyer <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: thmeyer <marvin42@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 13:20:36 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/22 20:29:41 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/23 11:52:55 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static int	check_overflow(int sign)
 {
@@ -41,12 +42,12 @@ int	ft_atoi(const char *str)
 			sign *= -1;
 		i++;
 	}
+	if (i > 18)
+		return (check_overflow(sign));
 	while (ft_isdigit(str[i]))
 	{
 		result = result * 10 + str[i] - 48;
 		i++;
 	}
-	if ((result * 10) / 10 != 1)
-		return (check_overflow(sign));
 	return (result * sign);
 }
