@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmeyer <marvin42@42.fr>                   +#+  +:+       +#+        */
+/*   By: thmeyer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 13:20:36 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/23 11:52:55 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/23 15:01:57 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-
-static int	check_overflow(int sign)
-{
-	if (sign < 0)
-		return (0);
-	return (-1);
-}
-
 /**
  * @brief converts the initial portion of the string pointed to by str to int
  * @param str 
@@ -29,7 +20,7 @@ int	ft_atoi(const char *str)
 {
 	long long int	i;
 	int				sign;
-	int				result;
+	long long int	result;
 
 	i = 0;
 	sign = 1;
@@ -42,12 +33,12 @@ int	ft_atoi(const char *str)
 			sign *= -1;
 		i++;
 	}
-	if (i > 18)
-		return (check_overflow(sign));
 	while (ft_isdigit(str[i]))
 	{
-		result = result * 10 + str[i] - 48;
+		if (result != ((result * 10 + (((str[i] - 48)) * sign)) / 10))
+			return (((sign + 1) / 2) / -1);
+		result = result * 10 + ((str[i] - 48) * sign);
 		i++;
 	}
-	return (result * sign);
+	return ((int)result);
 }
