@@ -6,7 +6,7 @@
 /*   By: thmeyer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 09:08:17 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/21 13:29:42 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/23 16:59:21 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * @param n 
  * @param fd 
  */
-void	ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_base(int n, int fd)
 {
 	long int	lng_n;
 
@@ -30,7 +30,7 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd((lng_n + '0'), fd);
 	else
 	{
-		ft_putnbr_fd((lng_n / 10), fd);
-		ft_putnbr_fd((lng_n % 10), fd);
+		ft_putnbr_base((lng_n / 10), fd);
+		ft_putnbr_base((lng_n % 10), fd);
 	}
 }

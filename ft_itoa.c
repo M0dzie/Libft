@@ -6,16 +6,12 @@
 /*   By: thmeyer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:28:36 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/21 15:01:32 by thmeyer          ###   ########.fr       */
+/*   Updated: 2022/11/28 09:13:13 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/**
- * @brief converts the portion of int to str
- * @param n 
- * @return
- */
+
 static size_t	digit_count(long int n)
 {
 	size_t	result;
@@ -36,6 +32,11 @@ static size_t	digit_count(long int n)
 	return (result);
 }
 
+/**
+ * @brief converts the portion of int to str
+ * @param n 
+ * @return
+ */
 char	*ft_itoa(int n)
 {
 	char			*str;
