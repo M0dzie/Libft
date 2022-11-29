@@ -6,7 +6,7 @@
 #    By: thmeyer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 13:07:05 by thmeyer           #+#    #+#              #
-#    Updated: 2022/11/23 14:43:30 by thmeyer          ###   ########.fr        #
+#    Updated: 2022/11/29 14:05:03 by thmeyer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean all
+re: fclean
+	make all
 
 .PHONY: all clean fclean re bonus
