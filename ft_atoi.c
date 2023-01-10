@@ -6,13 +6,13 @@
 /*   By: thmeyer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 13:20:36 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/22 12:12:15 by thmeyer          ###   ########.fr       */
+/*   Updated: 2023/01/05 10:26:59 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 /**
- * @brief converts the initial portion of the string pointed to by str to int
+ * @brief converts the initial portion of the string pointed by str to int
  * @param str 
  * @return
  */
@@ -20,7 +20,7 @@ int	ft_atoi(const char *str)
 {
 	long long int	i;
 	int				sign;
-	int				result;
+	long long int	result;
 
 	i = 0;
 	sign = 1;
@@ -35,8 +35,10 @@ int	ft_atoi(const char *str)
 	}
 	while (ft_isdigit(str[i]))
 	{
-		result = result * 10 + str[i] - 48;
+		if (result != ((result * 10 + (((str[i] - 48)) * sign)) / 10))
+			return (((sign + 1) / 2) / -1);
+		result = result * 10 + ((str[i] - 48) * sign);
 		i++;
 	}
-	return (result * sign);
+	return ((int)result);
 }

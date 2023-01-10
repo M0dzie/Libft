@@ -6,7 +6,7 @@
 /*   By: thmeyer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:34:57 by thmeyer           #+#    #+#             */
-/*   Updated: 2022/11/22 12:39:22 by thmeyer          ###   ########.fr       */
+/*   Updated: 2023/01/05 10:56:45 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_list	*ft_lstnew(void *content)
 	t_list	*new;
 
 	new = malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
 	if (new)
 	{
 		new->content = content;
