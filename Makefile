@@ -6,7 +6,7 @@
 #    By: thmeyer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 13:07:05 by thmeyer           #+#    #+#              #
-#    Updated: 2023/01/10 14:52:10 by thmeyer          ###   ########.fr        #
+#    Updated: 2023/01/10 14:57:15 by thmeyer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,9 +40,6 @@ DIR_OBJS = ../Objs/
 all: directory $(NAME)
 
 $(NAME): $(OBJS)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
-
-bonus: $(OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
 $(DIR_OBJS)%.o: %.c Makefile $(HEADER)
